@@ -62,3 +62,7 @@ Secure Cookies to false. You can do this with `abctl` by passing the `--insecure
 ```shell
 abctl local install --host [HOSTNAME] --insecure-cookies
 ```
+
+## Utilizing EC2 Instance Profile IAM Role
+
+S3 Destination and other aws connectors can inherit the role assinged as the instance profile to the ec2.  In order for this to work with abctl, set the ec2 metadata setting `http_put_response_hop_limit` to `3`, or else attempting this will result in the error `Could not connect with provided configuration. Error: No identity could be resolved from the chain`
